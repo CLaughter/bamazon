@@ -3,7 +3,7 @@
 #### This is an Amazon-like storefront CLI app utilizing MySQL and Node.js with Inquirer npm packages.  It will take in orders from customers and deplete stock from the store's inventory. 
 
 #### Bamazon will also track product sales across the store's departments and then provide a summary of the highest-grossing departments in the store.
-
+---
 
 1. *Running the Customer View (MySQL Database called bamazon)*
 
@@ -13,7 +13,7 @@
 
 #### A table will display the following columns:
 
-###### * item_id (unique id for each product)
+##### * item_id (unique id for each product)
 
 ##### * product_name (Name of product)
 
@@ -28,7 +28,7 @@
 #### If there are insufficient quantities, a message will display indicating such.
 
 #### Otherwise the store will fulfill the customer's order, update the SQL database reflecting the remaining quantities and show the total cost of the purchase.
-
+---
 
 2. *Running the Manager View (Node application called bamazonManager.js)*
 
@@ -41,7 +41,7 @@
 ##### * Add To Inventory - will display a prompt that will let the manager "add more" of any item currently in the store
 
 ##### * Add New Product - allows the manager to add a completely new product to the store
-
+---
 
 3. *Running the Supervisor View (MySQL table called departments)*
 
@@ -50,7 +50,7 @@
 ##### * Create New Department
 
 ##### * View Product Sales by Department - displays a summarized table where total_profit is calculated as a difference of overhead_costs and product_sales though not stored in a database and uses a custom alias 
-
+---
 
 4. *MySQL table called departments*
 #### Table includes the following:
@@ -62,6 +62,7 @@
 ##### * over_head_costs (A dummy number you set for each department)
 
 #### If an item is selected for purchase of anything from the store, the bamazonCustomer.js app is modified where the price of the product and quantity purchased are factored then is added to that item in the product_sales column. It also updates the product inventory.
+---
 
 ###### CLaughter developed this app as a coding bootcamp assignment.
 
