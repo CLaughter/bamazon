@@ -1,6 +1,6 @@
 # Bamazon
 
-#### This is an Amazon-like storefront CLI app utilizing MySQL and Node.js with Inquirer npm packages.  It will take in orders from customers and deplete stock from the store's inventory. 
+#### This is an Amazon-like storefront CLI app utilizing MySQL and Node.js with Inquirer npm packages. It will take in orders from customers and deplete stock from the store's inventory. 
 
 #### Bamazon will also track product sales across the store's departments and then provide a summary of the highest-grossing departments in the store.
 ---
