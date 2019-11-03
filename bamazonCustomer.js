@@ -63,7 +63,7 @@ function questions() {
           // call updateProduct AFTER the INSERT completes
           updateProduct(user.itemBuy, newQuant);
         } else {
-          console.log("There are only " + res[0].stock_quantity + " " + "left in stock.");
+          console.log("There's' only " + res[0].stock_quantity + " " + "left in stock.");
           questions();
         }
       });            
