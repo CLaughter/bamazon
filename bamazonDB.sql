@@ -23,4 +23,4 @@ values ('Mirror', 'Home Decore', '1.00', '10'),
        ('Screw', 'Hardware', '.25', '695'),
        ('Paint Brush', 'Paint', '19.98', '42'),
        ('Wall Cabinet', 'Interior Design', '1895', '8'),
-       ('fishing pole', 'Sporting Goods', '39.95', '29');
+       ('Fishing pole', 'Sporting Goods', '39.95', '29');
