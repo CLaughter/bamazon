@@ -68,4 +68,4 @@
 
 Link to project code: https://github.com/CLaughter/bamazon.git
 
-YouTube Link: 
+YouTube Link: https://youtu.be/MSgwgX3Vg6I

@@ -14,8 +14,8 @@ CREATE TABLE products(
 );
 -- Inserting  rows of data to the products table
 INSERT INTO bamazonDB.products (product_name, department_name, price, stock_quantity)
-values ('Mirror', 'Home Decore', '1', '10'),
-       ('TV', 'Electronics', '5.5', '12'),
+values ('Mirror', 'Home Decore', '1.00', '10'),
+       ('TV', 'Electronics', '5.50', '12'),
        ('Computer', 'Electronics', '999.99', '8'),
        ('Bath Rug', 'Home Decore', '8.75', '23'),
        ('Cement', 'Building Supplies', '18.95', '60'),

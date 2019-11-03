@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 var inquirer = require('inquirer');
 var mysql = require('mysql');
 
@@ -7,8 +5,8 @@ var mysql = require('mysql');
 var connection = mysql.createConnection( {
   host: 'localhost',
   port: 3306,
-  user: 'root',
-  password: process.env.DB_PASS,
+  user: 'chris',
+  password: 'root1root',
   database: 'bamazonDB'
 });
 
@@ -65,7 +63,7 @@ function questions() {
           // call updateProduct AFTER the INSERT completes
           updateProduct(user.itemBuy, newQuant);
         } else {
-          console.log("Not");
+          console.log("There are only " + res[0].stock_quantity + " " + "left in stock.");
           questions();
         }
       });            
