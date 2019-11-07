@@ -1,7 +1,7 @@
 var inquirer = require('inquirer');
 var mysql = require('mysql');
+require("console.table");
 
-// Create mysql connection
 var connection = mysql.createConnection( {
   host: 'localhost',
   port: 3306,
@@ -11,53 +11,60 @@ var connection = mysql.createConnection( {
 });
 
   connection.connect(function(err) {
-    if(err) throw err;
-    // Display if connected or throw error
-    console.log("Connected as id: " + connection.threadId); 
-    // query products
-    queryAllProducts();
+    if(err) {      
+      console.error("Error connecting: " + err.stack);
+    } else {
+      console.log("Connected as id: " + connection.threadId); 
+    }    
+    makeTable();
   });
 
-// Fetch all data and define previously called function
-function queryAllProducts() {
-  connection.query("SELECT * FROM products", function(err,res) {
-    if(err) throw err;
-    // Loop through products list and display row data in a list
-    for (var i = 0; i < res.length; i++) {
-      console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price + " | " + res[i].stock_quantity);
-    }
-    console.log('-------------------------------------------------');
-    questions();
-  })
-}
+  function makeTable() {
+    connection.query("SELECT * FROM products", function(err,res) {
+      if(err) throw err;
+      console.table(res);
+      questions();
+    });
+  };
 
-// Query user input and define previously called function
 function questions() {
   inquirer
   .prompt([
     {
       type: "input",
       name: "itemBuy",
-      message: "What is the item # you would like to buy?"
+      message: "What is the item # you would like to buy?",
+      validate: function(value) {
+        if(isNaN(value) == false) {
+          return true;
+        } else {
+          return false;
+        }
+      }
     }, 
     {
       type: "input",
       name: "quantBuy",
-      message: "How many would you like?"
+      message: "How many would you like?",
+      validate: function(value) {
+        if(isNaN(value) == false) {
+          return true;
+        } else {
+          return false;
+        }
+      }
     }
   ])
     
-  // Respond to user if order submitted otherwise display quantity available
     .then(function(user){
-      var query = connection.query
-      ('SELECT * FROM products WHERE item_id = ?',      
+      connection.query('SELECT * FROM products WHERE item_id = ?',      
       [
         user.itemBuy
       ],
       function( err, res) {
         if(err) throw err;
         console.log(res);
-        // Verify sufficient quantity in stock and set to a variable else message remaining stock quantity
+
         if(user.quantBuy <= res[0].stock_quantity) {
           var newQuant = res[0].stock_quantity - user.quantBuy;
           // Calculate and display total
@@ -81,12 +88,11 @@ function updateProduct(item_id, newQuant){
     [newQuant, item_id],
     function(err,res) {
       if(err) throw err;
-      console.log(res.affectedRows + " products inserted!\n");
+      console.log(res.affectedRows + " product(s) updated!\n");
       connection.end();
     }
   );
   
-  // Logs actual query being run
   console.log(query.sql);
 }
 
